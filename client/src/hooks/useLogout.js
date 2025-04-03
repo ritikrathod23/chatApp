@@ -4,7 +4,7 @@ const useLogout = () =>{
     const navigate = useNavigate()
     const handleLogout = async () => {
         try {
-          const response = await fetch("http://localhost:8000/user/logout", {
+          const response = await fetch("https://chatapp-x05b.onrender.com/user/logout", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

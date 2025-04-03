@@ -10,7 +10,7 @@ function Signup() {
         console.log("data", email.value, password.value)
 
         try {
-            const response = await fetch('http://localhost:8000/user/signup', {
+            const response = await fetch('https://chatapp-x05b.onrender.com/user/signup', {
               method: 'POST', 
               headers: {
                 "Content-Type": "application/json", 
