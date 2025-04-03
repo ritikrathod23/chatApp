@@ -26,9 +26,10 @@ app.use('/user', userRoute);
 app.use('/msg', messageRoute);
 
 const dirname = path.resolve()
-app.use(express.static(path.join(dirname, '/client/build')))
+app.use(express.static(path.join(dirname, '/client/dist')))
+ 
 app.get("*", (req, res)=>{
-    res.sendFile(path.resolve(dirname, "client", "build", "index.html"))
+    res.sendFile(path.join(dirname, "client", "dist", "index.html"))
 })
 // Connect to database
 mongooseConnect();

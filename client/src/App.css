@@ -1,0 +1,30 @@
+.clipPath{
+    clip-path: polygon(15.2% 0%, 100.1% 0%, 100% 100%, 0% 100%);
+}
+
+/* For WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 12px; /* Width of vertical scrollbar */
+    height: 12px; /* Height of horizontal scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Background color of scrollbar track */
+    border-radius: 10px; /* Rounded corners */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #7073d7; /* Scrollbar thumb color */
+    border-radius: 20px; /* Rounded corners */
+    border: 3px solid #f0f0f0; /* Adds padding effect */
+  }
+  
+  /* ::-webkit-scrollbar-thumb:hover {
+    background-color: #4338ca; /* Darker color on hover */
+  
+  
+  /* For Firefox (Fallback using scrollbar-width property) */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #9792e9 #f0f0f0;
+  }

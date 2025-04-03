@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const dotenv = require ("dotenv");
 dotenv.config();
 
-const   url = 'mongodb+srv://ritikrathod9708:xfC4Npx7VS8tF1Ng@cluster0.qbtib.mongodb.net/LCChatApp?retryWrites=true&w=majority&appName=Cluster0'
+const url = process.env.MONGOOSE_KEY
 
 
 const mongooseConnect = () =>{

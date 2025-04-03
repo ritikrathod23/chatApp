@@ -32,7 +32,7 @@ module.exports.login = async(req, res) => {
       
         bcrypt.compare(password, user.password , (err, isMatch) => {
             if(isMatch){
-                const token = jwt.sign({email: email, userid: User._id}, "shhhh")
+                const token = jwt.sign({email: email, userid: User._id}, process.env.SECRET_KEY)
                 res.cookie("token",token)
                 .status(200).send({user:{
                     _id : user.id,
@@ -63,7 +63,7 @@ module.exports.signup = async(req, res) => {
                 password: hash
                 })
 
-                const token = jwt.sign({email: email, userid: User._id}, "shhhh")
+                const token = jwt.sign({email: email, userid: User._id}, process.env.SECRET_KEY)
                 res.cookie("token",token)
                 .status(200).send({
                     massege: "Account created successfully"

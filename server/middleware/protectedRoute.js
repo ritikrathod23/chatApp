@@ -4,14 +4,15 @@ dotenv.config();
 const User = require('../model/user-model')
 
 const protectedRoute = async (req, res, next) => {
-    const token = req.cookies.token 
+    const token = req.cookies.token
     // console.log("token", token)
     try {
         
         if (!token) {
             return res.status(401).send({ message: 'You must login first' });
         }
-        const data = jwt.verify(token, process.env.SECREATEKEY);
+        const data = jwt.verify(token, process.env.SECRET_KEY);
+
         
         if(!data){
             return res.status(401).json({error: "Unauthorized - Invalid token"})
