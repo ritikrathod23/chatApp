@@ -10,7 +10,7 @@ const useGetMessages = () => {
     setLoading(true)
     const getMessages = async () =>{
       try {
-        const response = await fetch(`${API_URL}/msg/get/${selected._id}`, {
+        const response = await fetch(`https://chatapp-x05b.onrender.com/msg/get/${selected._id}`, {
           method: 'GET',
           headers: {  
             "Content-Type": "application/json",
