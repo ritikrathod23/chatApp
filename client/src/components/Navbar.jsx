@@ -4,9 +4,10 @@ import { userData } from '../auth/userAuthID'
 import { useToggleContext } from '../contexAPI/useToggle';
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross1 } from "react-icons/rx";
-
+import useLogout  from "../hooks/useLogout"
 
 function Navbar() {
+  const { handleLogout } = useLogout();
   const user = userData()
   const {isDrawerOpen, setIsDrawerOpen, toggleDrawer } = useToggleContext()
   return (
@@ -19,8 +20,12 @@ function Navbar() {
         <Searchbar/>  
         <div className=' ml-auto clipPath  flex justify-end  items-center bg-gradient-to-r from-indigo-600 to-indigo-400   w-[30%] h-20'>
           <p className='hidden sm:block mr-6 text-xl '>{user.name}</p>
+          
+          {/* Profile Drop Down Menu */}
+          
           <img
-            className=" mr-2 w-14 h-14 rounded-full"
+            onClick={handleLogout}
+            className=" mr-2 w-14 h-14 rounded-full cursor-pointer "
             alt="Tailwind CSS chat bubble component"
             src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
           />

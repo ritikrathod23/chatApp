@@ -21,8 +21,10 @@ function Coversationcards({ item, index, loading }) {
             : ""
         }`}
         onClick={() => {
+          toggleDrawer()
           setSelected(item);
         }}
+        
         key={index}
       >
        

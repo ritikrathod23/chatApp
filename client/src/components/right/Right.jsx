@@ -25,14 +25,14 @@ function Right() {
 
   return (
   <>
-    <div className='sm:md:w-[75%]  h-full z-0  '>
+    <div className="w-full h-full relative">
       {selected ? (
       <div>
       <Messages/>
 
       <div >
         <form 
-        className='flex justify-center items-center h-20 sm:w-[100%] lg:w-[75%] absolute bottom-0 px-10 '
+        className="flex justify-center items-center h-20 w-full absolute bottom-0 px-4 sm:px-8 bg-indigo-50"
         onSubmit={handleSend} >
         <div className='h-18 w-full'>
           <hr className="border-solid my-2 justify-center border-gray-800 opacity-50 border-[1px] w-full "></hr>

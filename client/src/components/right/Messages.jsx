@@ -21,11 +21,9 @@ import { useConversationsContext } from "../../contexAPI/useCovesation";
 
     return (
       <>
-        <div className="h-[532px] z-0 pb-16 w-full bg-indigo-50 overflow-auto px-10">
-          <div></div>
-          <div 
-            className="bg-indigo-50  z-10 fixed flex items-center w-full h-20 gap-5"
-          >
+        <div className="h-[calc(100vh-80px)] overflow-y-auto px-4 pt-24 pb-20 w-full bg-indigo-50">
+          <div className="absolute top-0 left-0 right-0 z-10 bg-indigo-50 flex items-center px-4 py-3 gap-4 border-b border-gray-200">
+
             <img
               className="w-16 h-16 bg-slate-100 rounded-full"
               alt="User avatar"
@@ -37,7 +35,7 @@ import { useConversationsContext } from "../../contexAPI/useCovesation";
             </div>
           </div>
           
-
+          <div>
           {!loading && messages.length === 0 ? (
             <div  className='w-full  h-[432px] text-center flex justify-center content-center items-center'>
             <p className='text-center  text-xl flex justify-center items-center' >
@@ -52,7 +50,7 @@ import { useConversationsContext } from "../../contexAPI/useCovesation";
               </div>
             ))
           )}
-          
+          </div>
           </div>
       </>
     );

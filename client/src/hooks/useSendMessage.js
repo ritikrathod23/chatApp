@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useConversationsContext } from "../contexAPI/useCovesation";
+const API_URL = import.meta.env.VITE_LURL
 
 const useSendMessage = () => {
     const [loading, setLoading ] = useState(false)
@@ -9,7 +10,7 @@ const useSendMessage = () => {
     const sendMessage = async (message) => {
         setLoading(true)
         try {
-          const response = await fetch(`https://chatapp-x05b.onrender.com/msg/send/${selected._id}`, {
+          const response = await fetch(`${API_URL}/msg/send/${selected._id}`, {
             method: 'POST', 
             headers: {
               "Content-Type": "application/json", 
