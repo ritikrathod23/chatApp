@@ -5,6 +5,7 @@ const API_URL = import.meta.env.VITE_LURL
 
 
 function Login() {
+  console.log(API_URL)
   const navigate = useNavigate()
     const handleLogin = async (event)=>{
         event.preventDefault()
