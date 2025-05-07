@@ -7,7 +7,7 @@ const useUpdateProfile = async (file, inputName, userId) => {
   formData.append("file", file);
   formData.append("name", inputName)
   try {
-    const response = await fetch(`${API_URL}/user/profile/${userId}`, {
+    const response = await fetch(`https://chatapp-x05b.onrender.com/user/profile/${userId}`, {
       method: "POST",
       body: formData,
     });

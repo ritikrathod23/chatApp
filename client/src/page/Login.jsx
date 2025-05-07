@@ -11,7 +11,7 @@ function Login() {
         const { email, password } = event.target.elements;
 
         try {
-            const response = await fetch(`${API_URL}/user/login`, {
+            const response = await fetch(`https://chatapp-x05b.onrender.com/user/login`, {
               method: 'POST', 
               headers: {
                 "Content-Type": "application/json",

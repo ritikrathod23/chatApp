@@ -10,7 +10,7 @@ const useSendMessage = () => {
     const sendMessage = async (message) => {
         setLoading(true)
         try {
-          const response = await fetch(`http://localhost:8000/msg/send/${selected._id}`, {
+          const response = await fetch(`https://chatapp-x05b.onrender.com/msg/send/${selected._id}`, {
             method: 'POST', 
             headers: {
               "Content-Type": "application/json", 

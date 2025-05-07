@@ -8,7 +8,7 @@ const useGetConversations = () => {
     setLoading(true)
     const getConversation = async () =>{
       try {
-        const response = await fetch(`${API_URL}/user/getusers`, {
+        const response = await fetch(`https://chatapp-x05b.onrender.com/user/getusers`, {
           method: 'GET',
           headers: {  
             "Content-Type": "application/json",
