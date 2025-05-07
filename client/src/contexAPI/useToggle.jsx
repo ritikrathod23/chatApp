@@ -10,7 +10,6 @@ export const ToggleProvider = ({children}) => {
      const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
      const toggleDrawer = () => {
-        console.log("clicked")
         setIsDrawerOpen((prev) => !prev);
       };
 

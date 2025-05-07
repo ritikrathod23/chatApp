@@ -1,7 +1,8 @@
 const express = require("express")
 const router = express.Router();
-const { getUsers, login, signup } = require("../controller/userController");
+const { getUsers, login, signup, profile } = require("../controller/userController");
 const protectedRoute = require("../middleware/protectedRoute");
+const upload = require("../middleware/profile-image")
 
 router.get('/getusers', protectedRoute, getUsers)
 
@@ -17,6 +18,11 @@ router.post('/logout', async (req, res) => {
     .status(200)
     .send({message: "logout successfull"}) 
 })
+
+
+router.post('/profile/:id',upload.single('file'), profile)
+
+
 
 
 module.exports = router

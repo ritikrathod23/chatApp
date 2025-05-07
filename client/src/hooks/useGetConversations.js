@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-const API_URL = import.meta.env.VITE_LURL
+const API_URL = import.meta.env.VITE_URL
 const useGetConversations = () => {
   const [loading, setLoading ] = useState(false)
   const [conversations, setConversations ] = useState([])
@@ -8,7 +8,7 @@ const useGetConversations = () => {
     setLoading(true)
     const getConversation = async () =>{
       try {
-        const response = await fetch(`https://chatapp-x05b.onrender.com/user/getusers`, {
+        const response = await fetch(`${API_URL}/user/getusers`, {
           method: 'GET',
           headers: {  
             "Content-Type": "application/json",

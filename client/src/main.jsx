@@ -12,6 +12,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './page/Login.jsx'
 import Signup from './page/Signup.jsx'
 import Layout from './page/Layout.jsx'
+import Profile from './page/Profile.jsx'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <Signup />,
+  },
+  {
+    path: '/profile',
+    element: <Profile />,
   },
   {
     path: 'home',
@@ -33,9 +38,7 @@ createRoot(document.getElementById('root')).render(
     <ToggleProvider>
       <ConversationProvider>
         <RouterProvider router={router}>
-          <StrictMode>
-            <App />
-          </StrictMode>,
+          <App />
         </RouterProvider>
       </ConversationProvider>
     </ToggleProvider>

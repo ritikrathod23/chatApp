@@ -1,7 +1,13 @@
 import React from 'react'
 import AuthId from '../../auth/userAuthID'
+import { useConversationsContext } from '../../contexAPI/useCovesation'
 
 function Message({message, loading}) {
+
+    const dateTime = new Date(message.createdAt)
+    
+    // const day = dateTime.getUTCHours()
+    const splitTime = dateTime.toString().split(" ").splice(1, 4).join(" ")
 
     const fromMe = message.senderId === AuthId()
     const chatClassName = fromMe ? "chat-end" : "chat-start";
@@ -13,15 +19,15 @@ function Message({message, loading}) {
         <div className="px-4 sm:px-6 w-full max-w-4xl mx-auto">
           <div className={`chat ${chatClassName} w-full`}>
             <div className="chat-image avatar">
-              <div className="w-10 h-10 rounded-full">
+              {/* <div className="w-10 h-10 rounded-full">
                 <img
                   alt="Tailwind CSS chat bubble component"
                   src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
                 />
-              </div>
+              </div> */}
             </div>
             <div className="chat-header text-xs text-gray-500">
-              <time className="text-xs opacity-50 ">{Date.now()}</time>
+              <time className="text-xs opacity-50 ">{splitTime}</time>
             </div>
             <div className={`chat-bubble  ${ bubbleBgColor } max-w-[85%] sm:max-w-md`}>{message.message}</div>
             <div className="chat-footer opacity-50">Delivered</div>

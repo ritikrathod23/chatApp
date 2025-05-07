@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-const API_URL = import.meta.env.VITE_LURL
+const API_URL = import.meta.env.VITE_URL
 
 const useLogout = () =>{
     const navigate = useNavigate()
     const handleLogout = async () => {
         try {
-          const response = await fetch(`https://chatapp-x05b.onrender.com/user/logout`, {
+          const response = await fetch(`${API_URL}/user/logout`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

@@ -2,13 +2,13 @@ import React from "react";
 import { useConversationsContext } from "../../contexAPI/useCovesation";
 import { useSocketContext } from "../../contexAPI/useSocket";
 import { useToggleContext } from "../../contexAPI/useToggle";
+import { RiAccountCircleLine } from "react-icons/ri";
 
 function Coversationcards({ item, index, loading }) {
   const { selected, setSelected } = useConversationsContext() || {};
   const { onlineUsers } = useSocketContext();
   const isOnline = onlineUsers.includes(item._id);
   const {isDrawerOpen, setIsDrawerOpen, toggleDrawer} = useToggleContext()
-
   const isSelected = selected?._id === item._id;
 
   return (
@@ -21,8 +21,10 @@ function Coversationcards({ item, index, loading }) {
             : ""
         }`}
         onClick={() => {
-          toggleDrawer()
-          setSelected(item);
+          setSelected(item); 
+          if (window.innerWidth < 768) {
+            toggleDrawer(); // ✅ Only for mobile view
+          }
         }}
         
         key={index}
@@ -32,11 +34,16 @@ function Coversationcards({ item, index, loading }) {
         <div 
           className={`my-auto chat-image ${isOnline ? "online " : ""} avatar`}
         >
-          <div className=" w-10 rounded-full">
+          <div className=" w-10 outline-[3px] outline-gray-600 rounded-full">
+            {item?.profile ? (
             <img
               alt="Tailwind CSS chat bubble component"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+              src={`data:image/png;base64,${item?.profile}`}
             />
+            ) : (
+            <RiAccountCircleLine
+              className=" hidden md:block mr-10 w-10 h-10 rounded-full" />
+            )}
           </div>
         </div>
         <div className="flex flex-col">

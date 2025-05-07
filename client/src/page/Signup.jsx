@@ -1,7 +1,7 @@
 import React from 'react'
 import  { useNavigate, Link } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast';
-const API_URL = import.meta.env.VITE_LURL
+const API_URL = import.meta.env.VITE_URL
 
 function Signup() {
   const navigate = useNavigate()
@@ -11,7 +11,7 @@ function Signup() {
         console.log("data", email.value, password.value)
 
         try {
-            const response = await fetch(`https://chatapp-x05b.onrender.com/user/signup`, {
+            const response = await fetch(`${API_URL}/user/signup`, {
               method: 'POST', 
               headers: {
                 "Content-Type": "application/json", 

@@ -3,6 +3,7 @@ const express = require("express")
 const bcrypt = require('bcrypt')
 const router = express.Router();
 const jwt = require('jsonwebtoken');
+const multer = require('multer')
 
 module.exports.getUsers = async (req, res) =>{
     const token = req.cookies.token;
@@ -23,6 +24,46 @@ module.exports.getUsers = async (req, res) =>{
 }
 
 
+module.exports.profile = async (req, res) =>{
+    const userId  = req.params.id;
+    
+    
+    try {
+        const name = req.body.name;
+        console.log("req", req.body)
+        const base64 = req.file.buffer.toString('base64');
+
+        updateProfile = await User.findByIdAndUpdate(
+            userId,
+            {   name: name,
+                profile: base64
+            },
+            {new: true} 
+        )
+
+
+        if(!updateProfile){
+            return res.status(404).json({message: "user not found"})
+        }
+
+        res.status(200).json({
+            message: 'Profile updated successfully.',
+            profile: updateProfile.profile,
+        })
+
+    } catch (error) {
+        res.status(500)
+        .json({
+            message: 'Error updating profile.',
+            error: error.message 
+        });
+    }
+
+}
+
+
+
+
 module.exports.login = async(req, res) => {
     try {
         const { email, password } = req.body;
@@ -36,7 +77,8 @@ module.exports.login = async(req, res) => {
                 res.cookie("token",token)
                 .status(200).send({user:{
                     _id : user.id,
-                    name: user.name
+                    name: user.name,
+                    profile: user.profile
                 }, massege:"Login Succcessfull"})
                 } 
             else return res.status(500).send({massege:"Invalid Password"})
@@ -60,7 +102,8 @@ module.exports.signup = async(req, res) => {
                 const createAccount = await User.create({
                 name,
                 email,
-                password: hash
+                password: hash,
+                profile: null
                 })
 
                 const token = jwt.sign({email: email, userid: User._id}, process.env.SECRET_KEY)

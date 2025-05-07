@@ -17,7 +17,7 @@ function Layout() {
               <BiLogOutCircle color="white" size={40} />
             </button>
             <div className="absolute bottom-10 flex items-end justify-center ">
-              <IoSettingsSharp size={40} color="white" />
+              {/* <IoSettingsSharp size={40} color="white" /> */}
             </div>
           </div>
         </div>

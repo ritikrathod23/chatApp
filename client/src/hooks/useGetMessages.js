@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useConversationsContext } from '../contexAPI/useCovesation'
-const API_URL = import.meta.env.VITE_LURL
+const API_URL = import.meta.env.VITE_URL
 
 const useGetMessages = () => {
   const [loading, setLoading ] = useState(false)
@@ -10,7 +10,7 @@ const useGetMessages = () => {
     setLoading(true)
     const getMessages = async () =>{
       try {
-        const response = await fetch(`https://chatapp-x05b.onrender.com/msg/get/${selected._id}`, {
+        const response = await fetch(`${API_URL}/msg/get/${selected._id}`, {
           method: 'GET',
           headers: {  
             "Content-Type": "application/json",

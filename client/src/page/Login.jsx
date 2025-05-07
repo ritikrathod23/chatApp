@@ -1,21 +1,20 @@
 import React from 'react'
 import  { useNavigate, Link } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast';
-const API_URL = import.meta.env.VITE_LURL
+const API_URL = import.meta.env.VITE_URL
 
 
 function Login() {
-  console.log(import.meta.env.VITE_LURL)
   const navigate = useNavigate()
     const handleLogin = async (event)=>{
         event.preventDefault()
         const { email, password } = event.target.elements;
 
         try {
-            const response = await fetch(`https://chatapp-x05b.onrender.com/user/login`, {
+            const response = await fetch(`${API_URL}/user/login`, {
               method: 'POST', 
               headers: {
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
               },
               body: JSON.stringify({
                 email: email.value,
@@ -26,6 +25,7 @@ function Login() {
         
             // Parse the JSON response
             let data = await response.json();
+            
             
             if (response.ok) {
               localStorage.setItem("user", JSON.stringify(data))

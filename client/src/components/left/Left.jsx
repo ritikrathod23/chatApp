@@ -39,7 +39,7 @@ function Left() {
     <>
       {/* Sidebar for larger screens */}
       <div
-        className="w-[20%] h-[calc(100vh-80px)] hidden md:flex overflow-auto bg-indigo-200 items-center flex-col
+        className="w-[25%] h-[calc(100vh-80px)] hidden md:flex overflow-auto bg-indigo-200 items-center flex-col
         shadow-[1_3px_10px_rgb(0,0,0,0.8)]"
       >
         {content}

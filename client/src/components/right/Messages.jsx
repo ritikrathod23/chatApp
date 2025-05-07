@@ -4,6 +4,7 @@
   import useListenMessages from "../../hooks/useListenMessages";
   import { IoSendSharp } from "react-icons/io5";
 import { useConversationsContext } from "../../contexAPI/useCovesation";
+import { RiAccountCircleLine } from "react-icons/ri";
 
   function Messages() {
     const { messages, loading } = useGetMessages();
@@ -21,14 +22,20 @@ import { useConversationsContext } from "../../contexAPI/useCovesation";
 
     return (
       <>
-        <div className="h-[calc(100vh-80px)] overflow-y-auto px-4 pt-24 pb-20 w-full bg-indigo-50">
+        <div className="h-[calc(100vh-80px)] text-gray-600 overflow-y-auto px-4 pt-24 pb-20 w-full bg-indigo-50">
           <div className="absolute top-0 left-0 right-0 z-10 bg-indigo-50 flex items-center px-4 py-3 gap-4 border-b border-gray-200">
-
-            <img
-              className="w-16 h-16 bg-slate-100 rounded-full"
-              alt="User avatar"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+          <div className=" w-16 rounded-full">
+            {selected?.profile ? (
+              <img
+                className="w-16 h-16 outline-[3px] outline-gray-600  bg-slate-100 rounded-full"
+                alt="User avatar"
+                src={`data:image/png;base64,${selected?.profile}`}
             />
+            ): (
+              <RiAccountCircleLine
+                className="mr-10 w-10 h-10 rounded-full" />
+            )}
+            </div>
             <div className="flex flex-col">
               <h3 className="text-lg ">{selected?.name}</h3>
               <h5 className="text-sm ">{selected?.email}</h5>

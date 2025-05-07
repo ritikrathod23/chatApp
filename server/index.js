@@ -12,7 +12,7 @@ const path = require('path')
 // Middleware setup
 const corsOption = {
         origin: 'http://localhost:3000',
-        methods: ['GET', 'POST'],
+        methods: ['GET', 'POST', 'PATCH', 'PUT'],
         credentials: true,
     }
 
