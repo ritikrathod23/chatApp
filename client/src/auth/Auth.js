@@ -2,7 +2,7 @@
 export default async function UserLogin(email, password){
 
     try {
-        const response = await fetch(`https://chatapp-x05b.onrender.com/user/login`, {
+        const response = await fetch(`http://localhost:8000/user/login`, {
           method: 'POST', // Use POST for login
           headers: {
             "Content-Type": "application/json", // Inform the server you're sending JSON
