@@ -16,7 +16,7 @@ router.post('/login', login)
 router.post('/logout', async (req, res) => {
     res.clearCookie("token")
     .status(200)
-    .send({message: "logout successfull"}) 
+    .json({message: "logout successfully"}) 
 })
 
 

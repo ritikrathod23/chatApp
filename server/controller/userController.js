@@ -9,7 +9,7 @@ module.exports.getUsers = async (req, res) =>{
     const token = req.cookies.token;
     const loggedInUserId = req.user._id;
 
-    if(!token) return res.status(401).send({message: 'Please authenticate.'})
+    if(!token) return res.status(401).json({message: 'Please authenticate.'})
     try {  
         const Alluser = await User.find({ _id: { $ne: loggedInUserId }}).select("-password")
         
@@ -69,23 +69,23 @@ module.exports.login = async(req, res) => {
         const { email, password } = req.body;
 
         const user = await User.findOne({email})
-        if(!user) return res.status(500).send({massege:"user not found"})
+        if(!user) return res.status(500).json({message:"user not found"})
       
         bcrypt.compare(password, user.password , (err, isMatch) => {
             if(isMatch){
                 const token = jwt.sign({email: email, userid: User._id}, process.env.SECRET_KEY)
                 res.cookie("token",token)
-                .status(200).send({user:{
+                .status(200).json({user:{
                     _id : user.id,
                     name: user.name,
                     profile: user.profile
-                }, massege:"Login Succcessfull"})
+                }, message:"Login Successfully"})
                 } 
-            else return res.status(500).send({massege:"Invalid Password"})
+            else return res.status(500).json({message:"Invalid Password"})
         }) 
     } catch (error) {
         console.log("error in login controller", error.message)
-        res.status(500).sent({message: "Internal server error"})
+        res.status(500).json({message: "Internal server error"})
     }
     
 }
@@ -95,7 +95,7 @@ module.exports.signup = async(req, res) => {
     try {
         const { name, email, password } = req.body;
         const user = await User.findOne({email})
-        if(user) return res.status(500).send("user already exist")
+        if(user) return res.status(500).json("user already exist")
 
         bcrypt.genSalt(10, async (err, salt)=>{
             bcrypt.hash(password, salt, async function(err, hash) {
@@ -108,8 +108,8 @@ module.exports.signup = async(req, res) => {
 
                 const token = jwt.sign({email: email, userid: User._id}, process.env.SECRET_KEY)
                 res.cookie("token",token)
-                .status(200).send({
-                    massege: "Account created successfully"
+                .status(200).json({
+                    message: "Account created successfully"
                 })
             });
         })
