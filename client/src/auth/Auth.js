@@ -1,8 +1,8 @@
-
+const API_URL = import.meta.env.VITE_URL;
 export default async function UserLogin(email, password){
 
     try {
-        const response = await fetch(`http://localhost:8000/user/login`, {
+        const response = await fetch(`${API_URL}/user/login`, {
           method: 'POST', // Use POST for login
           headers: {
             "Content-Type": "application/json", // Inform the server you're sending JSON
